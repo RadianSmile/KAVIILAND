@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<form class="container">
+
+    <div>
+        <br>
+        <br>
+        <br>
+
+    </div>
+
+    <div class="form-group row">
+        <label for="package-a" class="col-lg-6 col-12 col-form-label">8入799元水蜜桃(未含運)【3斤｜1.8公斤重】(100組)</label>
+        <div class="col-lg-6 col-12">
+            <input id="package-a" name="package-a" placeholder="請輸入數量" type="number" min="0" step="1"
+                class="form-control product-input">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="package-b" class="col-lg-6 col-12  col-form-label">6入999元水蜜桃(未含運)【3斤｜1.8公斤重】(240組)</label>
+        <div class="col-lg-6 col-12">
+            <input id="package-b" name="package-b" placeholder="請輸入數量" type="number" min="0" step="1"
+                class="form-control product-input">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="package-c" class="col-lg-6 col-12 col-form-label">5入1,199元水蜜桃(未含運)【3斤｜1.8公斤重】(120組)</label>
+        <div class="col-lg-6 col-12">
+            <input id="package-c" name="package-c" placeholder="請輸入數量" type="number" min="0" step="1"
+                class="form-control product-input">
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <div class="col-lg-6 col-12"></div>
+        <div class="col-lg-6 col-12">
+            <button style="width:100%;" name="submit" id="cal" type="button" class="btn btn-primary">計算總金額</button>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="form-group row">
+        <label for="" class="col-lg-6 col-12 col-form-label">總金額（請將總金額回填 Google 表單）</label>
+        <div class="col-lg-6 col-12">
+            <input id="result" readonly name="" placeholder="自動計算" type="text" class="form-control">
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <div class="col-lg-6 col-12"></div>
+        <div class="col-lg-6 col-12">
+            <br>
+            <p style="color:grey">
+                【運費說明】訂購一至三盒: 運費225元｜訂購四至六盒 :
+                運費290元｜六盒以上未達團購標準，會以三和六為單位計算運費，例如:訂購七盒即為6+1運費計算(290+225元)、訂購10盒即為6+4運費計算(225+290元)
+            </p>
+        </div>
+
+    </div>
+
+
+    <br>
+    <p>
+
+    </p>
+
+
+
+
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+
+
+    //$(".product-input").change(cal);
+    //$(".product-input").keyup(cal);
+
+    $("#cal").click(cal)
+    function cal() {
+        const $result = $("#result")
+        const a = parseInt($("#package-a").val()) || 0
+        const b = parseInt($("#package-b").val()) || 0
+        const c = parseInt($("#package-c").val()) || 0
+
+        const total = a + b + c
+
+        console.log(total)
+
+        const p1 = Math.floor(total / 6) * 290
+
+        const p2_mod = total % 6
+
+        let p2 = 0
+
+        if (p2_mod == 0) {
+
+            p2 = 0
+
+        } else if (p2_mod > 0 && p2_mod <= 3) {
+            p2 = 255
+        } else if (p2_mod > 3 && p2_mod < 6) {
+            p2 = 290
+        }
+
+
+        $result.val(p1 + p2)
+
+    }
+
+</script>
