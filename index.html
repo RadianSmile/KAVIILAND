@@ -6,6 +6,7 @@
     <div>
         <br>
         <br>
+        <h3>總金額計算工具 | 梨山特選水蜜桃</h3>
         <br>
 
     </div>
@@ -89,6 +90,10 @@
         const b = parseInt($("#package-b").val()) || 0
         const c = parseInt($("#package-c").val()) || 0
 
+        const a_total = a * 799
+        const b_total = b * 999
+        const c_total = c * 1199
+
         const total = a + b + c
 
         console.log(total)
@@ -104,14 +109,17 @@
             p2 = 0
 
         } else if (p2_mod > 0 && p2_mod <= 3) {
-            p2 = 255
+            p2 = 225
         } else if (p2_mod > 3 && p2_mod < 6) {
             p2 = 290
         }
 
-
-        $result.val(p1 + p2)
-
+        const sum = p1 + p2 + a_total + b_total + c_total
+        $result.val(sum)
+        const str = `
+            ${  }
+        `
+        alert(`總金額 ${sum}`)
     }
 
 </script>
